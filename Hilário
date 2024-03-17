@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class javafacul {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int[][] A = new int[5][5];
+        
+        System.out.println("Digite os valores para a matriz A:");
+        preencherMatriz(A, scanner);
+        
+        System.out.print("Digite um valor inteiro para X: ");
+        int valorX = scanner.nextInt();
+        
+        System.out.println("\nMatriz A:");
+        mostrarMatriz(A);
+        
+        System.out.println("\nValor de X é " + (verificarParidade(valorX) ? "par" : "ímpar"));
+        
+        int[][] B = criarMatrizB(A, valorX);
+        
+        System.out.println("\nMatriz B:");
+        mostrarMatriz(B);
+        
+        scanner.close();
+    }
+    
+    public static void preencherMatriz(int[][] matriz, Scanner scanner) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print("Digite um valor inteiro: ");
+                matriz[i][j] = scanner.nextInt();
+            }
+        }
+    }
+    
+    public static boolean verificarParidade(int numero) {
+        return numero % 2 == 0;
+    }
+    
+    public static int[][] criarMatrizB(int[][] matrizA, int valorX) {
+        int[][] matrizB = new int[5][5];
+        for (int i = 0; i < matrizA.length; i++) {
+            for (int j = 0; j < matrizA[i].length; j++) {
+                if (verificarParidade(matrizA[i][j]) == verificarParidade(valorX)) {
+                    matrizB[i][j] = matrizA[i][j] * valorX;
+                } else {
+                    matrizB[i][j] = matrizA[i][j];
+                }
+            }
+        }
+        return matrizB;
+    }
+    
+    public static void mostrarMatriz(int[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
