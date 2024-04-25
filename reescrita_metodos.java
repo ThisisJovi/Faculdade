@@ -15,3 +15,16 @@ class Homem extends Mamifero {
         condicao("Homem andando");
     }
 }
+
+
+class servico {
+    public double calculataxa(){
+        return 5;
+    }
+}
+
+class Emprestimo extends Servico {
+    public double calculaTaxa(){
+        return super.calculaTaxa()+ this.valor *0.1;
+    }
+}
